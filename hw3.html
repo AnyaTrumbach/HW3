@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> HW3 </title> 
+</head>
+
+<body>
+    <p>Play Gurgling Noise (click again to stop).</p>
+    <div class = "container">
+        <p>Part I: </p>
+        <button> Play </button>
+        <label for="fix"> Check for Second Brown Noise Implementation: </label>
+        <input type="checkbox" id="fix"><br>
+    </div>
+    <canvas id="visualizer" width="800" height="300"></canvas><br>
+    <div class = "container1">
+        <p>Part II: </p>
+        <p>If there is no sound, reload the page or double click.</p>
+        <button id="ball"> Bounce Ball </button>
+        <p> I followed the designing sound reading, Practical 7, to make the sound of a bouncing ball. 
+            First, I created linear functions to update each important bounce parameter, total single bounce time, amplitude, and sound decay time. 
+            I passed updated versions of these parameters into the single bounce function after the total single bounce time using setTimeout().
+            A single bounce takes place within the total single bounce time passed into the function and is made up of a thud sound
+            at 120Hz as well as a frequency modulated sound. The attack and decay part of the ADSR envelope on the thud takes places within a "hit" time,
+            which is the total bounce time minus the decayTime. The sustain and release parts of the envelope then happen in the decay time. </p>
+        <p> A frequency modulated sound is played at the same time as the 120hz thud. The carrier frequency of this sound is connected to modulation frequency and gain nodes
+            with the goal of the carrier frequency exponentially sweeping from (210 to 80 hz) times 70 Hz, times an amplitude variable that is updated an decreases between
+            each call to the single bounce function. These two sounds are balanced with individual gain nodes and then sent to the output.</p>
+        <p> The final issue with my code that I can't seem to fix is that the carrier frequency does not update and is stuck at the default 
+            value despite being connected to the modulation index node.</p>
+        <img src="webAudioMapn_1.jpg" width="800" height="300">
+    </div>
+</body>
+
+<script src="hw3script_version2.js"></script>
+<script src="hw3bouncingball.js"></script>
+
+</html>
